@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using IdentityServer4.EntityFramework.DbContexts;
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -20,7 +21,7 @@ namespace IdentityServerHost.Quickstart.UI
         private readonly IWebHostEnvironment _environment;
         private readonly ILogger _logger;
 
-        public HomeController(IIdentityServerInteractionService interaction, IWebHostEnvironment environment, ILogger<HomeController> logger)
+        public HomeController(IIdentityServerInteractionService interaction, IWebHostEnvironment environment, ILogger<HomeController> logger, ConfigurationDbContext dbContext)
         {
             _interaction = interaction;
             _environment = environment;

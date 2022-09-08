@@ -7,6 +7,8 @@ namespace IdentityServer
     {
         public static IEnumerable<ApiScope> ApiScopes => new List<ApiScope>
         {
+            new ApiScope("OrderApi","订单API"),
+            new ApiScope("TestApi","Test API"),
         };
 
         public static IEnumerable<Client> Clients => new List<Client>
