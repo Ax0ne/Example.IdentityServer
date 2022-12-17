@@ -7,20 +7,20 @@ namespace IdentityServer
 {
     public class InitializeDatabase
     {
-public static void SeedData(IApplicationBuilder app)
+        public static void SeedData(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<TestDbContext>();
-if(!context.Users.Any())
-{
+                if (!context.Users.Any())
+                {
                     context.Users.Add(new User
                     {
                         //Id = 1,
-                        Name="zhang",
-                        Nick="小张",
-                        Password="asd",
-                        PhoneNumber="13812345678"
+                        Name = "zhang",
+                        Nick = "小张",
+                        Password = "asd",
+                        PhoneNumber = "13812345678"
                     });
                     context.Users.Add(new User
                     {
@@ -34,23 +34,26 @@ if(!context.Users.Any())
                 }
             }
 
-            using (var serviceScope= app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-    {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-                if(!context.Clients.Any())
+                if (!context.Clients.Any())
                 {
                     foreach (var client in Config.Clients)
                     {
                         context.Clients.Add(client.ToEntity());
                     }
+
                     context.SaveChanges();
                 }
+
                 if (!context.IdentityResources.Any())
                 {
                     foreach (var resource in Config.IdentityResources)
                     {
                         context.IdentityResources.Add(resource.ToEntity());
                     }
+
                     context.SaveChanges();
                 }
 
@@ -60,9 +63,10 @@ if(!context.Users.Any())
                     {
                         context.ApiScopes.Add(resource.ToEntity());
                     }
+
                     context.SaveChanges();
                 }
             }
-}
+        }
     }
 }
