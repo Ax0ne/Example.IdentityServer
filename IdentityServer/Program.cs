@@ -18,7 +18,7 @@ builder.Services.AddIdentityServer(options =>
         options.EmitStaticAudienceClaim = true;
         options.Authentication.CookieLifetime = TimeSpan.FromHours(1);
     })
-    .AddDeveloperSigningCredential()
+    //.AddDeveloperSigningCredential()
     //.AddInMemoryIdentityResources(Config.IdentityResources)
     //.AddInMemoryApiScopes(Config.ApiScopes)
     //.AddInMemoryClients(Config.Clients)

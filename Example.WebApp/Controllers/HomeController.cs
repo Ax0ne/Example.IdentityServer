@@ -18,7 +18,7 @@ namespace Example.WebApp.Controllers
         public IActionResult Index()
         {
             var ispass = User.IsInRole("Admin");
-            var user = User.Claims; 
+            var user = User.Claims;
             return View();
         }
 
